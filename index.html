@@ -1,32 +1,51 @@
 <html>
     <head>
-        <title>
-            Zoho Time Calculator
-        </title>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Zoho Time Calculator</title>
+        <link rel="stylesheet" type="text/css" href="https://unpkg.com/@salesforce-ux/design-system@3.0.1-dev/assets/styles/salesforce-lightning-design-system.css" />
+        
         <style>
             .subcontainer{
-                margin: auto;
-                width: 60%;
-                margin-top: 250px;
-                border-color: red;
-                border: 2px solid;
-                height: 50px;
-                display: flex;
-                justify-content: center;
+                
+                width: 43%;
+                border: 2px solid transparent;
+                /* height: 50px; */
+                height: 100px !important;
+                background: lightblue;
+                box-shadow: 10px 10px 5px yellow;
+                
             }
             .subdivContainer{
-                padding: 10px;
+                padding: 30px;
                 margin: 5px;
             }
             .mainTextContainer{
-                width: 60%;
+                width: 50%;
                 margin: auto;
-                padding: 30px;
+                font-size: large;
+                padding: 30px 10px 10px 55px;
             }
             .textcolor{
                 color: red;
             }
-
+            .imgZoho{
+                width: 25%;
+                padding: 10px;
+                margin: 50px;
+            }
+            .timePicker{
+                width: 40%;
+                height: 35px;
+                border-radius: 10px;
+                font-size: 20px;
+                text-align: center;
+            }
+            .timePickerLabel{
+                font-size: medium;
+                font-family: monospace;
+            }
            
         </style>
         <script>
@@ -75,23 +94,33 @@
                 }
         </script>
     </head>
-    <body style="overflow: hidden;">
-        <div>
-            <div class="subcontainer">
-                <div class="subdivContainer">
-                    <label for="appt">Enter your current hours:</label>
-                    <input input type="time" id="myTime" value="">
-                    
-                </div>
-                <div class="subdivContainer">
-                    <button type="button" onclick="getTimefunc()">Get Time</button>
-                </div>
+    <body style="overflow: hidden;" >
+        <div class="slds-card" style="height: 100% !important;">
+            <div class="backgroundDiv">
+
             </div>
             <div>
-                <div class="mainTextContainer">
-                    <span id="leftTime" class="textcolor"></span></br>
-                    <span id="leaveTime" class="textcolor">  </span>
+
+                <div class="slds-align_absolute-center"> 
+                    <img src="/assets/imges/zohoLogo.png" class="imgZoho">
                 </div>
+            <div class="slds-align_absolute-center">
+                    <div class="subcontainer slds-grid">
+                        <div class="subdivContainer slds-col slds-size--8-of-12">
+                            <label for="appt" class="timePickerLabel">Enter your current hours:</label>
+                        <input input type="time" id="myTime" value="" class="timePicker">
+                    </div>
+                    <div class="subdivContainer slds-col slds-size--4-of-12" style="text-align: center;">
+                        <button type="button" onclick="getTimefunc()" class="slds-button slds-button_brand">Get Time</button>
+                    </div>
+                </div>
+                <div>
+                    
+                </div>
+            </div>
+            <div class="mainTextContainer">
+                <span id="leftTime" class="textcolor"></span></br>
+                <span id="leaveTime" class="textcolor">  </span>
             </div>
         </div>
     </body>
