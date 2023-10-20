@@ -1,0 +1,98 @@
+<html>
+    <head>
+        <title>
+            Zoho Time Calculator
+        </title>
+        <style>
+            .subcontainer{
+                margin: auto;
+                width: 60%;
+                margin-top: 250px;
+                border-color: red;
+                border: 2px solid;
+                height: 50px;
+                display: flex;
+                justify-content: center;
+            }
+            .subdivContainer{
+                padding: 10px;
+                margin: 5px;
+            }
+            .mainTextContainer{
+                width: 60%;
+                margin: auto;
+                padding: 30px;
+            }
+            .textcolor{
+                color: red;
+            }
+
+           
+        </style>
+        <script>
+            function getTimefunc() {
+                console.log(document.getElementById("myTime"))
+                let time = document.getElementById("myTime");
+                let timearr = time.value.split(':');
+                console.log(timearr);
+                let minutes = this.convertIntoMinutes(timearr[0],timearr[1]);
+                console.log(minutes);
+                let total_minutes = 480;
+                    if(total_minutes < minutes){
+                        document.getElementById("leftTime").innerHTML = 'You already completed you time go home and relex';
+                    }else if(total_minutes > minutes){
+                        left_time = total_minutes - minutes;
+                        let leftTime  = convertIntohours(left_time);
+                    }
+                }
+                function convertIntoMinutes(hours , minutes){
+                    console.log('hours ', hours );
+                    console.log('minutes ',minutes);
+                    let total_hours_in_minutes = hours * 60 ;
+                    total_minutes = (parseInt(total_hours_in_minutes) + parseInt(minutes))
+                    return total_minutes
+                }
+                function convertIntohours(total_minutes){
+                    hours = total_minutes / 60;
+                    console.log('hours',hours)
+                    remaining_minutes = total_minutes % 60
+                    let timearr = [parseInt(hours),remaining_minutes];
+                    console.log('timearrrr', timearr);
+                    let currentDate = addHoursAndMinutesToCurrentDate(parseInt(hours), remaining_minutes)
+                    var hours = currentDate.getHours();
+                    var minutes = currentDate.getMinutes();
+                    var seconds = currentDate.getSeconds();
+
+                    document.getElementById("leftTime").innerHTML = 'Time Left- '+timearr[0]+':'+timearr[1];
+                    document.getElementById("leaveTime").innerHTML = 'Based on the current time You can leave office  by - '+hours+':'+minutes;
+                    
+                }
+                function addHoursAndMinutesToCurrentDate(hours, minutes) {
+                    var currentDate = new Date();
+                    currentDate.setHours(currentDate.getHours() + hours);
+                    currentDate.setMinutes(currentDate.getMinutes() + minutes);
+                    return currentDate;
+                }
+        </script>
+    </head>
+    <body style="overflow: hidden;">
+        <div>
+            <div class="subcontainer">
+                <div class="subdivContainer">
+                    <label for="appt">Enter your current hours:</label>
+                    <input input type="time" id="myTime" value="">
+                    
+                </div>
+                <div class="subdivContainer">
+                    <button type="button" onclick="getTimefunc()">Get Time</button>
+                </div>
+            </div>
+            <div>
+                <div class="mainTextContainer">
+                    <span id="leftTime" class="textcolor"></span></br>
+                    <span id="leaveTime" class="textcolor">  </span>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
